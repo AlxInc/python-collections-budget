@@ -15,14 +15,14 @@ class Expenses():
         self.sum = 0
 
     # Read in the December spending data, row[2] is the $$, and need to format $$
-    def read_expenses(self,filename):
+    def read_expenses(self ,filename):
         with open(filename, newline='') as csvfile:
             csvreader = csv.reader(csvfile, delimiter=',')
             for row in csvreader:
                 if '-' not in row[3]:
                     continue
-                amount = float((row[3][2:]).replace(',',''))
-                self.list.append(Expense(row[0],row[1], row[2], amount))
+                amount = float((row[3][2:]).replace(',' ,''))
+                self.list.append(Expense(row[0] ,row[1], row[2], amount))
                 self.sum += amount
 
     def categorize_for_loop(self):
@@ -42,21 +42,15 @@ class Expenses():
             return [necessary_expenses, food_expenses, unnecessary_expenses]
 
     def categorize_set_comprehension(self):
-        necessary_expenses = {x for x in self.list}
-        if x.category == 'Phone':
-            pass
-        elif x.category == 'Auto and Gas':
-            pass
-        elif x.category == 'Classes':
-            pass
-        elif x.category == 'Utilities':
-            pass
-        elif x.category == 'Mortgage':
-            pass
-        food_expenses = {y for y in self.list}
-        if y.category == 'Groceries':
-            pass
-        if y.category == 'Eating Out':
-            pass
+        necessary_expenses = {x for x in self.list
+                            if x.category == 'Phone' or
+                            x.category == 'Auto and Gas' or
+                            x.category == 'Classes' or
+                            x.category == 'Utilities' or
+                            x.category == 'Mortgage'}
+
+        food_expenses = {y for y in self.list
+                            if y.category == 'Groceries' or
+                            y.category == 'Eating Out'}
         unnecessary_expenses = set(self.list) - necessary_expenses - food_expenses
         return [necessary_expenses, food_expenses, unnecessary_expenses]
