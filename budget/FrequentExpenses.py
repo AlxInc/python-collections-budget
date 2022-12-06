@@ -14,5 +14,5 @@ categories, count = zip(*top5)
 
 fix, ax = plt.subplots()
 ax.bar(categories, count)
-ax.set_title('# of purchases by Category')
+ax.set_title("# of purchases by Category")
 plt.show()
