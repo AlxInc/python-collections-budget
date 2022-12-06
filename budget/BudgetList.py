@@ -9,7 +9,7 @@ class BudgetList:
         self.overages = []
 
     def append(self, item):
-        if self.sum_expenses(int(item)) < self.budget:
+        if self.sum_expenses+item < self.budget:
             self.expenses.append(item)
             self.sum_expenses += item
         else:
@@ -28,7 +28,7 @@ def main():
     for expense in expenses.list:
         myBudgetList.append(expense.amount)
 
-    print(f'The count of all expenses: {len(myBudgetList)}')
+    print('The count of all expenses:' str(len(myBudgetList)))
     if __name__ == '__main__':
         main()
 
