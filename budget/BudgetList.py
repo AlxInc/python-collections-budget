@@ -22,6 +22,17 @@ class BudgetList:
         sum2 = len(self.overages)
         return sum1, sum2
 
+def __iter__(self):
+    iter(self.expenses)
+    self.iter_o = iter(self.overages)
+    return self
+
+def __next__(self):
+    try:
+        return __next__(self.iter_e)
+    except:
+        StopIteration
+        return __next__(self.iter_o)
 def main():
     myBudgetList = BudgetList(1200)
     expenses = Expense.Expenses()
@@ -41,17 +52,7 @@ def main():
     ax.set_title('Your total expenses vs. total budget')
     plt.show()
 
-def __iter__(self):
-    iter(self.expenses)
-    self.iter_o = iter(self.overages)
-    return self
 
-def __next__(self):
-    try:
-        return __next__(self.iter_e)
-    except:
-        StopIteration
-        return __next__(self.iter_o)
 
 
 
